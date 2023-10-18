@@ -5,17 +5,10 @@ import React, {useEffect, useState} from "react";
 const Player = (props) => {
     return (
         <Flex py='4' px='8' m='2' bg='gray.50' borderRadius='lg' color='gray.500'  >
-            <Text  fontWeight='semibold'>
-                #{props.rank}
-            </Text>
+            <Text   fontSize='sm'>#{props.rank}</Text>
+            <Text mx='6' fontWeight='semibold'  fontSize='xl'>{props.name}</Text>
             <Spacer/>
-            <Text>
-                {props.name}
-            </Text>
-            <Spacer/>
-            <Text fontSize='lg'>
-                {props.wins} / {props.losses}
-            </Text>
+            <Text fontSize='sm'>{props.wins} / {props.losses}</Text>
         </Flex>
         )
 }

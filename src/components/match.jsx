@@ -27,12 +27,12 @@ const MatchHistory = () => {
 const Match = (props) => {
     let bgColor = props.won ?'green.50' : 'red.50'
     return (
-        <Flex p='4' m='2' bg={bgColor} borderRadius='lg' color='gray.500'>
-            <Text fontWeight='semibold'>{props.winnerName}</Text>
+        <Flex px='8' py='4' m='2' bg={bgColor} borderRadius='lg' color='gray.500'>
+            <Text fontWeight='semibold' fontSize='xl'>{props.winnerName}</Text>
             <Spacer/>
-            <Text color='gray.400'>vs.</Text>
+            <Text fontSize='sm'>vs.</Text>
             <Spacer/>
-            <Text fontWeight='semibold'>{props.loserName}</Text>
+            <Text fontWeight='semibold' fontSize='xl'>{props.loserName}</Text>
         </Flex>
     )
 }
