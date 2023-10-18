@@ -30,7 +30,7 @@ const Challenges = () => {
     }, [])
 
     const fetchPlayers = () => {
-        fetch(`http://localhost:8080/players/${playerId}/challenges`)
+        fetch(`http://192.168.0.105:8080/players/${playerId}/challenges`)
         .then(res => res.json())
         .then(json => setChallenges(json))
     }

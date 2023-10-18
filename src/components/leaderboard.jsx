@@ -5,15 +5,15 @@ import React, {useEffect, useState} from "react";
 const Player = (props) => {
     return (
         <Flex py='4' px='8' m='2' bg='gray.50' borderRadius='lg' color='gray.500'  >
-            <Text>
+            <Text  fontWeight='semibold'>
                 #{props.rank}
             </Text>
             <Spacer/>
-            <Text >
+            <Text>
                 {props.name}
             </Text>
             <Spacer/>
-            <Text>
+            <Text fontSize='lg'>
                 {props.wins} / {props.losses}
             </Text>
         </Flex>
@@ -24,7 +24,7 @@ const LeaderBoard = () => {
     const [players, setPlayers] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8080/leaderboard')
+        fetch('http://192.168.0.105:8080/leaderboard')
             .then(res => res.json())
             .then(json => setPlayers(json))
     }, [])
