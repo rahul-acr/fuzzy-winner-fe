@@ -8,7 +8,7 @@ import {ChakraProvider,extendTheme} from '@chakra-ui/react'
 
 const theme = extendTheme({
   fonts: {
-    heading: '"Avenir Next", sans-serif',
+    heading: '"Cantarell", sans-serif',
     body: '"Cantarell", sans-serif',
   },
 })

@@ -42,8 +42,6 @@ const Challenges = () => {
     }
 
     const onAcceptConfirm = async () => {
-        onClose()
-        console.log('confirmed', selectedChallenge, matchTime)
         let data = {
             'opponentId': playerId,
             'matchTime': matchTime
@@ -71,6 +69,7 @@ const Challenges = () => {
             })
         }
         fetchPlayers()
+        onClose()
     }
 
     return (
