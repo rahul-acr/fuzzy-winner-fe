@@ -21,7 +21,7 @@ import {
     VStack
 } from "@chakra-ui/react";
 
-const playerId = 2
+const playerId = 1
 const MatchHistory = () => {
     const [matches, setMatches] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure()
