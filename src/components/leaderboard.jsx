@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Spacer, Text, Button, useToast } from "@chakra-ui/react";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 const playerId = 1
 
@@ -8,14 +8,24 @@ const playerId = 1
 const Player = (props) => {
     return (
         <Flex py='4' px='8' m='2' bg='gray.50' borderRadius='lg' color='gray.500'  >
-            <Text   fontSize='sm'>#{props.rank}</Text>
-            <Text mx='6' fontWeight='semibold'  fontSize='xl'>{props.name}</Text>
-            <Spacer/>
-            <Text fontSize='sm'>{props.wins} / {props.losses}</Text>
+            <Text fontSize='sm'>#{props.rank}</Text>
+            <Text mx='6' fontWeight='semibold' fontSize='xl'>{props.name}</Text>
             <Spacer />
-            <Button size='sm' variant='link' onClick={() => props.onChallenge(props.id, props.name)} >Challenge!</Button>
+            <Text fontSize='sm'>{props.wins} / {props.losses}</Text>
+
+            {props.id !== playerId &&
+                <>
+                <Spacer />
+                    <Button
+                        size='sm'
+                        variant='link'
+                        onClick={() => props.onChallenge(props.id, props.name)} >
+                        Challenge!
+                    </Button>
+                </>
+            }
         </Flex>
-        )
+    )
 }
 
 const LeaderBoard = () => {
@@ -61,13 +71,13 @@ const LeaderBoard = () => {
     return (
         <Box m='2'>
             <Center>
-                <Box w={{base: '100%', lg: '50%'}}>
-                    {players.map(({id, rank, name, wins, losses}) => (
+                <Box w={{ base: '100%', lg: '50%' }}>
+                    {players.map(({ id, rank, name, wins, losses }) => (
                         <Player key={id} id={id} rank={rank} name={name} wins={wins} losses={losses} onChallenge={chanllenge} />
-                        ))}
+                    ))}
                 </Box>
             </Center>
         </Box>
-        )
+    )
 }
 export default LeaderBoard;
