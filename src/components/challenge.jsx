@@ -31,7 +31,7 @@ const Challenges = () => {
     }, [])
 
     const fetchChallenges = () => {
-        fetch(`http://192.168.0.105:8080/players/${playerId}/challenges`)
+        fetch(`http://192.168.0.105:8080/players/${playerId}/challenges/received`)
             .then(res => res.json())
             .then(json => setChallenges(json))
     }
@@ -54,7 +54,7 @@ const Challenges = () => {
             },
             body: JSON.stringify(data),
         })
-        if (res.status === 200) {
+        if (res.ok) {
             toast({
                 title: 'Challenge accepted.',
                 status: 'success',
