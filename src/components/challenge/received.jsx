@@ -1,5 +1,4 @@
 import {
-    Box,
     Button,
     Center,
     Drawer, DrawerBody,
@@ -12,11 +11,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
-const playerId = 1
+const playerId = 4
 
 
 
-const Challenges = () => {
+const ReceivedChallenges = () => {
     const [challenges, setChallenges] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -107,32 +106,29 @@ const Challenges = () => {
 
     return (
         <>
-            <Box m='2'>
-                <Center>
-                    <Box w={{ base: '100%', lg: '50%' }} color='gray.600'>
-                        {challenges.map(({ id, challenger, isAccepted, winner, matchTime }) => {
-                            if (winner) {
-                                return <CompletedChallenge key={id} winner={winner.name} />
-                            } else if (isAccepted) {
-                                return <AcceptedChallenge key={id} id={id} from={challenger.name} matchTime={matchTime} onEnterResult={(cId) => {
-                                    selectChallenge(cId)
-                                    console.log('selected challenge', cId)
-                                    setDrawerMode('enterResult')
-                                    onOpen()
-                                }} />
-                            } else {
-                                return <UnAcceptedChallenge key={id} id={id} from={challenger.name} onAccept={onAccept} />
-                            }
-                        }
-                        )}
-                    </Box>
-                </Center>
-            </Box>
+
+            {challenges.map(({ id, challenger, isAccepted, winner, matchTime }) => {
+                if (winner) {
+                    return <CompletedChallenge key={id} winner={winner.name} />
+                } else if (isAccepted) {
+                    return <AcceptedChallenge key={id} id={id} from={challenger.name} matchTime={matchTime} onEnterResult={(cId) => {
+                        selectChallenge(cId)
+                        console.log('selected challenge', cId)
+                        setDrawerMode('enterResult')
+                        onOpen()
+                    }} />
+                } else {
+                    return <UnAcceptedChallenge key={id} id={id} from={challenger.name} onAccept={onAccept} />
+                }
+            }
+            )}
             <Drawer placement='bottom' onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 {drawerMode === 'acceptChallenge' && <AcceptChallengeDrawer onAcceptConfirm={onAcceptConfirm} />}
                 {drawerMode === 'enterResult' && <EnterResultDrawer onEnterResult={onEnterResult} />}
             </Drawer>
+
+
         </>
     )
 }
@@ -225,4 +221,4 @@ const CompletedChallenge = ({ winner }) => (
     </Flex>
 )
 
-export default Challenges;
+export default ReceivedChallenges;
